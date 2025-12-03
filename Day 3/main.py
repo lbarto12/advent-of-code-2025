@@ -20,7 +20,7 @@ with open("input.txt") as file:
 
         # Part 2
         constructed, boundary = '', 0
-        for i in range(-11, 1, 1):
+        for i in range(-11, 1):
             nxt, idx = max_and_location(line[boundary:i] if i else line[boundary:])
             boundary += idx + 1
             constructed += nxt
