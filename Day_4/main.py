@@ -16,22 +16,25 @@ def forklift(floor: List[List[chr]]) -> Tuple[int, Set[Tuple[int, int]]]:
                     valid.add((x, y))
     return result, valid
 
+def solve():
+    with open("input.txt") as file:
+        lines: List[List[chr]] = [list(i.strip()) for i in file.readlines()]
 
-with open("input.txt") as file:
-    lines: List[List[chr]] = [list(i.strip()) for i in file.readlines()]
+        p1, _ = forklift(lines)
 
-    p1, _ = forklift(lines)
+        p2: int = 0
+        while True:
+            count, remove = forklift(lines)
+            if not remove:
+                break
 
-    p2: int = 0
-    while True:
-        count, remove = forklift(lines)
-        if not remove:
-            break
+            p2 += count
 
-        p2 += count
+            for x, y in remove:
+                lines[y][x] = '.'
+        
+        print("Part 1:", p1)
+        print("Part 2:", p2)
 
-        for x, y in remove:
-            lines[y][x] = '.'
-    
-    print("Part 1:", p1)
-    print("Part 2:", p2)
+if __name__ == "__main__":
+    solve()
