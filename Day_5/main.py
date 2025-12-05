@@ -10,7 +10,7 @@ def solve():
         p1: int = sum(any(l <= ingredient <= r for l, r in ranges) for ingredient in ingredients)
         
         p2, (left, right) = 0, ranges[0]
-        for i, (l, r) in enumerate(ranges[1:]):
+        for l, r in ranges[1:]:
             if l <= right:
                 right = max(r, right)
             else:
