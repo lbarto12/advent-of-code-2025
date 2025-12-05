@@ -1,10 +1,10 @@
 from typing import List, Tuple
 
+Range = Tuple[int, int]
+
 def solve():
     with open("input.txt") as file:
-        lines: List[str] = file.read().split(',')
-
-        ranges: List[Tuple[int, int]] = [tuple(int(i) for i in r.split('-')) for r in lines]
+        ranges: List[Range] = [tuple(int(i) for i in r.split('-')) for r in file.read().split(',')]
 
         # Both Parts
         p1 = p2 = 0

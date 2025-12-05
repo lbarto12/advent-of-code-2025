@@ -1,7 +1,7 @@
 from typing import List, Tuple
 import time
 
-from visual_tools.screen import clear, print_at
+import visual_tools.screen as screen
 
 Direction = str
 Offset = int
@@ -13,15 +13,17 @@ with open("Day_1/input.txt") as file:
 
     pos: int = 50
     for direction, offset in instructions:
-        clear()
+        screen.clear()
         print('|'.join(r))
-        print_at(pos * 3, 1, "^")
+        screen.print_at(pos * 3, 1, "^")
         for _ in range(offset):
-            print_at(pos * 3, 1, " ")
+            screen.print_at(pos * 3, 1, " ")
             pos += (-1 if direction == "L" else 1)
             pos %= 100
-            print_at(pos * 3, 1, "^")
+            screen.print_at(pos * 3, 1, "^")
             time.sleep(.05)
-        print_at(pos * 3, 1, "CLICK!")
+        screen.print_at(pos * 3, 1, "CLICK!")
         time.sleep(1)
+    
+    input()
 

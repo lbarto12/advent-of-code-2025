@@ -11,7 +11,6 @@ def create_range_converter(lower_bound: int, upper_bound: int, w: int = 800) -> 
         ratio: float = (n - lower_bound) / rng
         new: int = int(ratio * w)
         return new
-
     return converter
 
 with open("Day_5/input.txt") as file:
@@ -29,31 +28,26 @@ with open("Day_5/input.txt") as file:
     c = screen.ColorAlternator()
     write_y: int = len(ranges) + 1
 
-    p2, (left, right) = 0, ranges[0]
+    left, right = ranges[0]
     for i, (l, r) in enumerate(ranges):
         if l <= right:
             right = max(r, right)
         else:
-            r_char: str = c.next("0")
+            r_char: str = c("0")
             for write_x in range(con(left), con(right) + 1):
                 for j in range(i + 1, write_y):
                     screen.print_at(write_x, j, r_char)
                 time.sleep(.01)
-            p2 += right - left + 1
             left, right = l, r
 
 
         for x in range(con(l), con(r) + 1):
             screen.print_at(x, i, "-")
 
-    r_char: str = c.next("0")
+    r_char: str = c("0")
     for write_x in range(con(left), con(right) + 1):
         for j in range(i + 1, write_y):
             screen.print_at(write_x, j, r_char)
         time.sleep(.01)
 
-    p2 += (right == r) * (right - left + 1)
-
     input()
-
-    print("Part 2:", p2)

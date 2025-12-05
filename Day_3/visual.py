@@ -11,7 +11,7 @@ with open("Day_3/input.txt") as file:
     
     c = screen.ColorAlternator()
 
-    j2 = 0
+    j2: int = 0
     for line in lines:
         screen.clear()
         screen.print_at(0, 0, line)
@@ -20,7 +20,7 @@ with open("Day_3/input.txt") as file:
 
         constructed, boundary = '', 0
         for i in range(-11, 1):
-            screen.print_at(boundary, 0, c.next(line[boundary:i] if i else line[boundary:]))
+            screen.print_at(boundary, 0, c(line[boundary:i] if i else line[boundary:]))
             time.sleep(.2)
             nxt, idx = max_and_location(line[boundary:i] if i else line[boundary:])
             screen.print_at(boundary, 0, "-" * idx)
@@ -32,3 +32,5 @@ with open("Day_3/input.txt") as file:
         time.sleep(.2)
         screen.print_at(0, 1, "adding: " + screen.colored(constructed, screen.bcolors.OKGREEN))
         time.sleep(1)
+
+    input()

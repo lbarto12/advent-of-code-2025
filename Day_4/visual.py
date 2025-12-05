@@ -31,3 +31,5 @@ with open("Day_4/input.txt") as file:
 
         for x, y in remove:
             print_at(x, y, ".")
+
+    input()
