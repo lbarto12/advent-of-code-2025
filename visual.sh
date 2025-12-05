@@ -1,2 +1,2 @@
 #!/bin/bash
-python -m $1.visual
+python -m Day_$1.visual
