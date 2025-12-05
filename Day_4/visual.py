@@ -1,14 +1,14 @@
 from typing import List
 
 import time
-from visual_tools.screen import print_at, clear, colored, bcolors
+import visual_tools.screen as screen
 
 from Day_4.main import forklift
 
 with open("Day_4/input.txt") as file:
     lines: List[List[chr]] = [list(i.strip()) for i in file.readlines()]
 
-    clear()
+    screen.clear()
     print(*[''.join(i) for i in lines], sep='\n')
 
     res: int = 0
@@ -22,7 +22,7 @@ with open("Day_4/input.txt") as file:
         res += count
 
         for x, y in remove:
-            print_at(x, y, colored("x", bcolors.RED))
+            screen.print_at(x, y, screen.colored("x", screen.bcolors.RED))
         
         time.sleep(.1)
 
@@ -30,6 +30,6 @@ with open("Day_4/input.txt") as file:
             lines[y][x] = '.'
 
         for x, y in remove:
-            print_at(x, y, ".")
+            screen.print_at(x, y, ".")
 
     input()
