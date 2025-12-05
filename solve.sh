@@ -1,3 +1,1 @@
-cd Day_$1
-python main.py
-cd ..
+python -m Day_$1.main

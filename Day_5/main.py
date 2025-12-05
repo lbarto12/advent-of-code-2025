@@ -2,7 +2,7 @@ from typing import List, Tuple
 import re
 
 def solve():
-    with open("input.txt") as file:
+    with open("Day_5/input.txt") as file:
         lines: List[List[chr]] = [i.strip() for i in file.readlines()]
         ranges, ingredients = lines[:(split := lines.index(''))], map(int, lines[split + 1:])
         ranges: Tuple[int, int] = sorted([tuple(map(int, *re.findall(r'(\d+)-(\d+)', i))) for i in ranges])

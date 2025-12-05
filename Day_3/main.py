@@ -8,7 +8,7 @@ def max_and_location(s: str) -> Tuple[str, int]:
     return mx, mi
 
 def solve():
-    with open("input.txt") as file:
+    with open("Day_3/input.txt") as file:
         lines: List[str] = [i.strip() for i in file.readlines()]
         
         j1 = j2 = 0

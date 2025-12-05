@@ -3,7 +3,7 @@ from typing import List, Tuple
 Range = Tuple[int, int]
 
 def solve():
-    with open("input.txt") as file:
+    with open("Day_2/input.txt") as file:
         ranges: List[Range] = [tuple(int(i) for i in r.split('-')) for r in file.read().split(',')]
 
         # Both Parts

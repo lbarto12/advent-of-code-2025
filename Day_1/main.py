@@ -4,7 +4,7 @@ Direction = str
 Offset = int
 
 def solve():
-    with open("input.txt") as file:
+    with open("Day_1/input.txt") as file:
         instructions: List[Tuple[Direction, Offset]] = [(a[0], int(a[1:])) for a in [i.strip() for i in file.readlines()]]
 
         p1 = p2 = 50

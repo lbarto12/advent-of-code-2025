@@ -17,7 +17,7 @@ def forklift(floor: List[List[chr]]) -> Tuple[int, Set[Tuple[int, int]]]:
     return result, valid
 
 def solve():
-    with open("input.txt") as file:
+    with open("Day_4/input.txt") as file:
         lines: List[List[chr]] = [list(i.strip()) for i in file.readlines()]
 
         p1, _ = forklift(lines)
