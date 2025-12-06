@@ -1,11 +1,12 @@
 from typing import List, Tuple
+from utils.types import Solution, Range
 import re
 
-def solve():
+def solve() -> Solution:
     with open("Day_5/input.txt") as file:
         lines: List[List[chr]] = [i.strip() for i in file.readlines()]
         ranges, ingredients = lines[:(split := lines.index(''))], map(int, lines[split + 1:])
-        ranges: Tuple[int, int] = sorted([tuple(map(int, *re.findall(r'(\d+)-(\d+)', i))) for i in ranges])
+        ranges: List[Range] = sorted([tuple(map(int, *re.findall(r'(\d+)-(\d+)', i))) for i in ranges])
 
         p1: int = sum(any(l <= ingredient <= r for l, r in ranges) for ingredient in ingredients)
         
@@ -19,8 +20,9 @@ def solve():
 
         p2 += (right == r) * (right - left + 1)
 
-        print("Part 1:", p1)
-        print("Part 2:", p2)
+        return p1, p2
 
 if __name__ == '__main__':
-    solve()
+    p1, p2 = solve()
+    print("Part 1:", p1)
+    print("Part 2:", p2)

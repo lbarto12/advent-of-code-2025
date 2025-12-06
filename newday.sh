@@ -24,8 +24,9 @@ echo "done"
 echo "Populating code file..."
 echo "
 from typing import List, Tuple
+from utils.types import Solution
 
-def solve() -> Tuple[any, any]:
+def solve() -> Solution:
     with open(\"Day_$1/input.txt\") as file:
         lines: List[List[chr]] = [i.strip() for i in file.readlines()]
 

@@ -1,4 +1,5 @@
 from typing import List, Generator, Tuple, Set
+from utils.types import Solution
 
 def adjacent(x: int, y: int) -> Generator[None, None, Tuple[int, int]]:
     for i in range(-1, 2):
@@ -16,25 +17,26 @@ def forklift(floor: List[List[chr]]) -> Tuple[int, Set[Tuple[int, int]]]:
                     valid.add((x, y))
     return result, valid
 
-def solve():
+def solve() -> Solution:
     with open("Day_4/input.txt") as file:
-        lines: List[List[chr]] = [list(i.strip()) for i in file.readlines()]
+        room: List[List[chr]] = [list(i.strip()) for i in file.readlines()]
 
-        p1, _ = forklift(lines)
+        p1, _ = forklift(room)
 
         p2: int = 0
         while True:
-            count, remove = forklift(lines)
+            count, remove = forklift(room)
             if not remove:
                 break
 
             p2 += count
 
             for x, y in remove:
-                lines[y][x] = '.'
+                room[y][x] = '.'
         
-        print("Part 1:", p1)
-        print("Part 2:", p2)
+        return p1, p2
 
 if __name__ == "__main__":
-    solve()
+    p1, p2 = solve()
+    print("Part 1:", p1)
+    print("Part 2:", p2)

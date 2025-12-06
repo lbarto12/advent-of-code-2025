@@ -1,8 +1,7 @@
-from typing import List, Tuple
+from typing import List
+from utils.types import Solution, Range
 
-Range = Tuple[int, int]
-
-def solve():
+def solve() -> Solution:
     with open("Day_2/input.txt") as file:
         ranges: List[Range] = [tuple(int(i) for i in r.split('-')) for r in file.read().split(',')]
 
@@ -16,8 +15,9 @@ def solve():
                         p2 += i
                         break
         
-        print("Part 1:", p1)
-        print("Part 2:", p2)
+        return p1, p2
 
 if __name__ == '__main__':
-    solve()
+    p1, p2 = solve()
+    print("Part 1:", p1)
+    print("Part 2:", p2)

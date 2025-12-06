@@ -1,9 +1,10 @@
 from typing import List, Tuple
+from utils.types import Solution
 
 Direction = str
 Offset = int
 
-def solve():
+def solve() -> Solution:
     with open("Day_1/input.txt") as file:
         instructions: List[Tuple[Direction, Offset]] = [(a[0], int(a[1:])) for a in [i.strip() for i in file.readlines()]]
 
