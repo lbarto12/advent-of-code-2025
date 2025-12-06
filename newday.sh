@@ -23,7 +23,7 @@ echo "done"
 
 echo "Populating code file..."
 echo "
-from typing import List, Tuple
+from typing import List
 from utils.types import Solution
 
 def solve() -> Solution:
