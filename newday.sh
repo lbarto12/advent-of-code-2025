@@ -11,7 +11,7 @@ touch Day_$1/readme.md
 echo "done"
 
 echo "Fetching daily input..."
-curl -o Day_$1/input.txt --cookie "session=$SESSION" https://adventofcode.com/2025/day/$2/input
+curl -o Day_$1/input.txt --cookie "session=$SESSION" https://adventofcode.com/2025/day/$1/input
 echo "done"
 
 echo "Populating readme.md..."
@@ -28,7 +28,7 @@ from utils.types import Solution
 
 def solve() -> Solution:
     with open(\"Day_$1/input.txt\") as file:
-        lines: List[List[chr]] = [i.strip() for i in file.readlines()]
+        lines: List[str] = [i.strip() for i in file.readlines()]
 
         p1: int = 0
         p2: int = 0
