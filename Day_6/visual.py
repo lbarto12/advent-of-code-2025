@@ -40,7 +40,6 @@ with open("Day_6/input.txt") as file:
             time.sleep(.5)
         time.sleep(.5)
 
-
         nums: List[str] = [''.join(i) for i in transpose([line[left:left+w] for line in read[:-1]]) if any(j.isnumeric() for j in i)]
         screen.print_at(w + 8, len(lines) - 1, f"={eval(ops[k].join(nums))}")
         p2 += eval(ops[k].join(nums))
