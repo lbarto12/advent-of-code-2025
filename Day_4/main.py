@@ -1,18 +1,15 @@
-from typing import List, Generator, Tuple, Set
-from utils.types import Solution
+from typing import List, Tuple, Set
+from utils.types import Solution, Position
 
-def adjacent(x: int, y: int) -> Generator[None, None, Tuple[int, int]]:
-    for i in range(-1, 2):
-        for j in range(-1, 2):
-            yield (x + j, y + i)
+from utils.ds import adjacent
 
-def forklift(floor: List[List[chr]]) -> Tuple[int, Set[Tuple[int, int]]]:
+def forklift(floor: List[List[chr]]) -> Tuple[int, Set[Position]]:
     w, h = len(floor[0]), len(floor)
-    valid: Set[Tuple[int, int]] = set()
+    valid: Set[Position] = set()
     result: int = 0
     for y, line in enumerate(floor):
             for x, c in enumerate(line):
-                if c == "@" and sum(0 <= cx < w and 0 <= cy < h and floor[cy][cx] == "@" for cx, cy in adjacent(x, y)) <= 4: # exclude self
+                if c == "@" and sum(0 <= cx < w and 0 <= cy < h and floor[cy][cx] == "@" for cx, cy in adjacent(x, y)) < 4: # exclude self
                     result += 1
                     valid.add((x, y))
     return result, valid
