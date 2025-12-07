@@ -1,4 +1,5 @@
 from typing import List, Tuple, Any, Iterable, Generator
+from utils.types import Position
 
 def t_add(*args) -> Tuple[Any, ...]:
     if not len({len(i) for i in args}) == 1:
@@ -19,3 +20,10 @@ def adjacent(x: int, y: int) -> Generator[None, None, Tuple[int, int]]:
             if (i, j) == (0, 0):
                 continue
             yield (x + j, y + i)
+
+def at(arr: Iterable[Iterable[Any]], pos: Position) -> Any:
+    return arr[pos[1]][pos[0]] # assuming x, y coordinates
+
+def set_at(arr: Iterable[Iterable[Any]], pos: Position, item: Any) -> Any:
+    arr[pos[1]][pos[0]] = item
+    return item
