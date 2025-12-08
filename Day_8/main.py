@@ -8,7 +8,7 @@ Junction = Tuple[int, int, int]
 Circuit = Set[Junction]
 Edge = Tuple[Junction, Junction]
 
-def dist(p1, p2):
+def dist(p1: Junction, p2: Junction) -> float:
     return math.sqrt(
         (p2[0] - p1[0]) ** 2 +
         (p2[1] - p1[1]) ** 2 +
@@ -29,12 +29,12 @@ def solve() -> Solution:
     with open("Day_8/input.txt") as file:
         j_boxes: List[Junction] = [tuple(map(int, i.strip().split(','))) for i in file.readlines()]
 
-        dists: List[Tuple[Edge, int]] = sorted([((i, j), dist(i, j)) for b, i in enumerate(j_boxes) for j in j_boxes[b + 1:]], key=lambda x: x[1])
+        dists: List[Tuple[Edge, float]] = sorted([((i, j), dist(i, j)) for b, i in enumerate(j_boxes) for j in j_boxes[b + 1:]], key=lambda x: x[1])
         
         circuits: List[Circuit] = [{i} for i in j_boxes]
 
         p1: int = 0
-        i = 0
+        i = -1
         while len(circuits) > 1:
             (a, b), _ = dists[i := i + 1]
             if i == 1000:                       # Change for relative input
