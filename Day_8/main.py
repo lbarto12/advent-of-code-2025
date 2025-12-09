@@ -36,7 +36,7 @@ def solve() -> Solution:
         circuits = DisjointSetUnion(j_boxes)
 
         p1: int = 0
-        i = -1
+        i: int = -1
         while len(circuits) > 1:
             (a, b), _ = dists[i := i + 1]
             if i == 1000:                       # Change for relative input
