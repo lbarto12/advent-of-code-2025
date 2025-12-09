@@ -1,6 +1,6 @@
-
 from typing import List, Tuple
 from utils.types import Solution, Position
+
 from shapely.geometry import Polygon
 
 def area(a, b) -> int:
