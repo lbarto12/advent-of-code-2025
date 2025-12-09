@@ -17,7 +17,12 @@ def solve() -> Solution:
         p = Polygon(red_tiles) # nice of them to provide puzzle input in cyclical order :)
 
         p1: int = max(area(*p) for p in pairs)
-        p2: int = max(c for a, b in pairs if (c := area(a, b)) and is_valid(a, b, p))
+       
+        p2: int = 0
+        [(p2 := c) for a, b in pairs if (c := area(a, b)) > p2 and is_valid(a, b, p)]
+        # for a, b in pairs:
+        #     if (c := area(a, b)) > p2 and is_valid(a, b, p):
+        #         p2 = c
 
         return p1, p2 
 
