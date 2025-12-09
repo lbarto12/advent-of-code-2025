@@ -1,10 +1,12 @@
 from typing import List
 from utils.types import Solution
+from utils.timing import runtime
 
 import re
 
 from utils.ds import transpose
 
+@runtime
 def solve() -> Solution:
     with open("Day_6/input.txt") as file:
         read: List[str] = file.readlines()
@@ -22,6 +24,7 @@ def solve() -> Solution:
             left += w
 
     return p1, p2
+
 
 if __name__ == '__main__':
     p1, p2 = solve()

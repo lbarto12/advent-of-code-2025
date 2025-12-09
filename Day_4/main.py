@@ -1,5 +1,6 @@
 from typing import List, Tuple, Set
 from utils.types import Solution, Position
+from utils.timing import runtime
 
 from utils.ds import adjacent
 
@@ -14,6 +15,7 @@ def forklift(floor: List[List[chr]]) -> Tuple[int, Set[Position]]:
                     valid.add((x, y))
     return result, valid
 
+@runtime
 def solve() -> Solution:
     with open("Day_4/input.txt") as file:
         room: List[List[chr]] = [list(i.strip()) for i in file.readlines()]
@@ -32,6 +34,7 @@ def solve() -> Solution:
                 room[y][x] = '.'
         
         return p1, p2
+
 
 if __name__ == "__main__":
     p1, p2 = solve()

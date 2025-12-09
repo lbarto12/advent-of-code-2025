@@ -1,6 +1,6 @@
-
 from typing import List, Tuple, Set
 from utils.types import Solution
+from utils.timing import runtime
 
 import math
 
@@ -25,6 +25,7 @@ def get_part_1(s: List[Circuit]) -> int:
     a, b, c = sorted(len(i) for i in s)[-3:]
     return a * b * c
 
+@runtime
 def solve() -> Solution:
     with open("Day_8/input.txt") as file:
         j_boxes: List[Junction] = [tuple(map(int, i.strip().split(','))) for i in file.readlines()]
@@ -49,6 +50,7 @@ def solve() -> Solution:
         p2: int = a[0] * b[0]
 
         return p1, p2 
+
 
 if __name__ == '__main__':
     p1, p2 = solve()

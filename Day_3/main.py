@@ -1,5 +1,6 @@
 from typing import List, Tuple
 from utils.types import Solution
+from utils.timing import runtime
 
 def max_and_location(s: str) -> Tuple[str, int]:
     mx, mi = '-1', -1
@@ -8,6 +9,7 @@ def max_and_location(s: str) -> Tuple[str, int]:
             mx, mi = c, i
     return mx, mi
 
+@runtime
 def solve() -> Solution:
     with open("Day_3/input.txt") as file:
         lines: List[str] = [i.strip() for i in file.readlines()]
@@ -28,6 +30,7 @@ def solve() -> Solution:
             j2 += int(constructed)
 
         return j1, j2
+
 
 if __name__ == '__main__':
     p1, p2 = solve()

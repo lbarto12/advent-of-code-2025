@@ -1,7 +1,10 @@
 from typing import List
 from utils.types import Solution, Range
+from utils.timing import runtime
+
 import re
 
+@runtime
 def solve() -> Solution:
     with open("Day_5/input.txt") as file:
         lines: List[List[chr]] = [i.strip() for i in file.readlines()]
@@ -21,6 +24,7 @@ def solve() -> Solution:
         p2 += (right == r) * (right - left + 1)
 
         return p1, p2
+
 
 if __name__ == '__main__':
     p1, p2 = solve()

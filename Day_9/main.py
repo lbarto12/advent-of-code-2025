@@ -1,4 +1,5 @@
 from typing import List, Tuple
+from utils.timing import runtime
 from utils.types import Solution, Position
 
 from shapely.geometry import Polygon
@@ -9,6 +10,7 @@ def area(a: Position, b: Position) -> int:
 def is_valid(a: Position, b: Position, p: Polygon) -> bool:
     return p.covers(Polygon([a, (a[0], b[1]), b, (a[1], b[0])])) # preserve cycle hack
 
+@runtime
 def solve() -> Solution:
     with open("Day_9/input.txt") as file:
         red_tiles: List[Position] = [tuple(map(int, i.strip().split(','))) for i in file.readlines()]

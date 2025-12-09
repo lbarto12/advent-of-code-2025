@@ -25,7 +25,9 @@ echo "Populating code file..."
 echo "
 from typing import List
 from utils.types import Solution
+from utils.timing import runtime
 
+@runtime
 def solve() -> Solution:
     with open(\"Day_$1/input.txt\") as file:
         lines: List[str] = [i.strip() for i in file.readlines()]
@@ -34,6 +36,7 @@ def solve() -> Solution:
         p2: int = 0
 
         return p1, p2 
+
 
 if __name__ == '__main__':
     p1, p2 = solve()
