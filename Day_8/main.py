@@ -16,12 +16,6 @@ def dist(p1: Junction, p2: Junction) -> float:
         (p2[2] - p1[2]) ** 2
     )
 
-def get_circuit(circuits: List[Circuit], junction: Junction) -> Tuple[int, Circuit]:
-    for i, circuit in enumerate(circuits):
-        if junction in circuit:
-            return i, circuit
-    return -1, None
-
 def get_part_1(s: DisjointSetUnion) -> int:
     a, b, c = sorted(s.len(i) for i in s)[-3:]
     return a * b * c
