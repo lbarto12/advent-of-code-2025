@@ -1,5 +1,6 @@
 from typing import List, Tuple, Set
 from utils.types import Solution
+from utils.ds import DisjointSetUnion
 from utils.timing import runtime
 
 import math
@@ -21,8 +22,8 @@ def get_circuit(circuits: List[Circuit], junction: Junction) -> Tuple[int, Circu
             return i, circuit
     return -1, None
 
-def get_part_1(s: List[Circuit]) -> int:
-    a, b, c = sorted(len(i) for i in s)[-3:]
+def get_part_1(s: DisjointSetUnion) -> int:
+    a, b, c = sorted(s.len(i) for i in s)[-3:]
     return a * b * c
 
 @runtime
@@ -32,7 +33,7 @@ def solve() -> Solution:
 
         dists: List[Tuple[Edge, float]] = sorted([((i, j), dist(i, j)) for b, i in enumerate(j_boxes) for j in j_boxes[b + 1:]], key=lambda x: x[1])
         
-        circuits: List[Circuit] = [{i} for i in j_boxes]
+        circuits = DisjointSetUnion(j_boxes)
 
         p1: int = 0
         i = -1
@@ -40,12 +41,7 @@ def solve() -> Solution:
             (a, b), _ = dists[i := i + 1]
             if i == 1000:                       # Change for relative input
                 p1 = get_part_1(circuits)
-            pa, ca = get_circuit(circuits, a)
-            if b in ca:
-                continue
-            pb, cb = get_circuit(circuits, b)
-            circuits[pa].update(cb)
-            del circuits[pb]
+            circuits.union(a, b)
 
         p2: int = a[0] * b[0]
 
