@@ -19,10 +19,7 @@ def solve() -> Solution:
         p1: int = max(area(*p) for p in pairs)
        
         p2: int = 0
-        [(p2 := c) for a, b in pairs if (c := area(a, b)) > p2 and is_valid(a, b, p)]
-        # for a, b in pairs:
-        #     if (c := area(a, b)) > p2 and is_valid(a, b, p):
-        #         p2 = c
+        [(p2 := c) for a, b in pairs if (c := area(a, b)) > p2 and is_valid(a, b, p)] # python is stupid lol
 
         return p1, p2 
 
