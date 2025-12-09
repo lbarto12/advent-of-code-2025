@@ -3,10 +3,10 @@ from utils.types import Solution, Position
 
 from shapely.geometry import Polygon
 
-def area(a, b) -> int:
+def area(a: Position, b: Position) -> int:
     return (max(a[0], b[0]) - min(a[0], b[0]) + 1) * (max(a[1], b[1]) - min(a[1], b[1]) + 1)
 
-def is_valid(a, b, p) -> int:
+def is_valid(a: Position, b: Position, p: Polygon) -> bool:
     return p.covers(Polygon([a, (a[0], b[1]), b, (a[1], b[0])])) # preserve cycle hack
 
 def solve() -> Solution:
