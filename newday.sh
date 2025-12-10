@@ -22,8 +22,7 @@ echo "
 echo "done"
 
 echo "Populating code file..."
-echo "
-from typing import List
+echo "from typing import List
 from utils.types import Solution
 from utils.timing import runtime
 
