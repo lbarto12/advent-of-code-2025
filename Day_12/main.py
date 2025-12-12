@@ -26,7 +26,7 @@ def solve() -> Solution:
         trees: List[Tree] = [(tuple(map(int, re.findall(r'(\d+)x(\d+)', j)[0])), list(map(int, filter(lambda x: x, j.split(':')[1].split(' '))))) for j in [i for i in filter(lambda x: x, chunks[-1].split('\n'))]]
 
         p1: int = sum(can_fit(tree, weights) for tree in trees)
-        p2: int = ":)"
+        p2: int = ">:("
 
         return p1, p2 
 
