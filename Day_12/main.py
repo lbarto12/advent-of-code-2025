@@ -15,6 +15,7 @@ def can_fit(tree: Tree, weights: List[int]) -> bool:
 # Only to realize that, for whatever reason, if I just exclude options that have greater total tiling, I get the right answer.
 # Which doesn't work on the demo input - because, realistically, it shouldn't work on the real input either. >:(
 # Very misleading, advent.
+# EDIT: knowing now that it was intentional, I am angry.
 @runtime
 def solve() -> Solution:
     with open("Day_12/input.txt") as file:
