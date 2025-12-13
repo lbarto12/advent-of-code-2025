@@ -7,12 +7,8 @@ Memo = Dict[Tuple[str, bool, bool], int]
 def valid_paths(key: str, dac: bool, fft: bool, paths: Dict[str, Set[str]], memo: Memo) -> int:
     if key == 'out':
         return dac * fft
-    elif key == 'dac':
-        dac = True
-    elif key == 'fft':
-        fft = True
     if (mk := (key, dac, fft)) not in memo:
-        memo[mk] = sum(valid_paths(nxt, dac, fft, paths, memo) for nxt in paths[key])
+        memo[mk] = sum(valid_paths(nxt, key == 'dac' or dac, key == 'fft' or fft, paths, memo) for nxt in paths[key])
     return memo[mk]
 
 
